@@ -1,18 +1,23 @@
 package com.example.ultraviewpagertest
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ultraviewpagertest.databinding.*
 import com.example.ultraviewpagertest.model.BannerItem
 import com.example.ultraviewpagertest.model.DummyItem
+import kotlinx.coroutines.*
 import java.util.*
-import kotlin.collections.HashMap
+
 
 class SubTabFragment: Fragment() {
 
@@ -34,11 +39,29 @@ class SubTabFragment: Fragment() {
         val list: List<DummyItem> = List(20) {
             DummyItem(
                 id = it,
-                title = UUID.randomUUID().toString()
+                title = "[${it + 1}] ${UUID.randomUUID()}"
             )
         }
 
+//        checkHeight(binding.recyclerView)
         listAdapter.submitList(list)
+
+    }
+
+    fun checkHeight(view: View) {
+        view.viewTreeObserver.addOnGlobalLayoutListener(object: ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                val listener = this
+                lifecycleScope.launch(Dispatchers.IO) {
+                    delay(3000)
+                    withContext(Dispatchers.Main) {
+                        Log.d("log_test", "${view.javaClass.simpleName} height >> ${view.height} [${pxToDp(requireContext(), view.height)}]")
+                        view.viewTreeObserver.removeOnGlobalLayoutListener(listener)
+                    }
+                }
+            }
+
+        })
     }
 
     companion object {

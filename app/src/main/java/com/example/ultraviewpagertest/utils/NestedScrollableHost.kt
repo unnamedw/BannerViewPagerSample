@@ -1,4 +1,4 @@
-package com.example.ultraviewpagertest
+package com.example.ultraviewpagertest.utils
 
 import android.content.Context
 import android.util.AttributeSet
