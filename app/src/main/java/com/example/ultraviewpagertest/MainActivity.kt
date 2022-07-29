@@ -11,14 +11,14 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.ultraviewpagertest.adapter.BannerPagerAdapter
 import com.example.ultraviewpagertest.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.tmall.ultraviewpager.UltraViewPager
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         val mainPagerAdapter = MainPagerAdapter(supportFragmentManager)
         binding.viewPager.adapter = mainPagerAdapter
-
-        binding.viewPager.adapter
 
 //        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
 //            tab.text = "${position+1}PAGE"
@@ -54,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
             }
         })
+
     }
 
 }

@@ -6,20 +6,39 @@
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/sub_tab_layout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                android:fitsSystemWindows="true">
+<!--                <com.tmall.ultraviewpager.UltraViewPager-->
+<!--                    android:id="@+id/header_banner"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="80dp"/>-->
+                <View
+                    android:id="@+id/collapsing_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@color/black"/>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
         <LinearLayout
-            android:id="@+id/linear_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/sub_tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
             <com.example.ultraviewpagertest.utils.NestedScrollableHost
                 android:id="@+id/nested_host"
                 android:layout_width="match_parent"
@@ -30,24 +49,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
             </com.example.ultraviewpagertest.utils.NestedScrollableHost>
-
-            <TextView
-                android:id="@+id/view_banner"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="banner"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:background="#1103DAC5"/>
-            <TextView
-                android:id="@+id/view_more"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:text="load more"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:background="#11424242"/>
         </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>
