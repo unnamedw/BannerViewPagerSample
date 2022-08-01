@@ -29,9 +29,6 @@ class MainFragment: Fragment() {
             }
 
             override fun onPageSelected(position: Int) {
-                binding.mainViewPager.setPageTransformer(false) { page, position ->
-                    updatePagerHeightForChild(page, binding.mainViewPager)
-                }
             }
 
             override fun onPageScrollStateChanged(state: Int) {

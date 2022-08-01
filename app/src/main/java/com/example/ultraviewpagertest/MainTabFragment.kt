@@ -6,10 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.ultraviewpagertest.adapter.SubPagerAdapter
 import com.example.ultraviewpagertest.databinding.FragmentMainTabBinding
-import com.google.android.material.tabs.TabLayoutMediator
 
 class MainTabFragment: Fragment() {
 

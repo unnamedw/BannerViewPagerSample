@@ -9,6 +9,7 @@ import com.example.ultraviewpagertest.adapter.DummyListAdapter
 import com.example.ultraviewpagertest.databinding.*
 import com.example.ultraviewpagertest.model.DummyItem
 import java.util.*
+import kotlin.random.Random
 
 class SubTabFragment: Fragment() {
 
@@ -27,10 +28,10 @@ class SubTabFragment: Fragment() {
         val listAdapter = DummyListAdapter()
         binding.recyclerView.adapter = listAdapter
 
-        val list: List<DummyItem> = List(20) {
+        val list: List<DummyItem> = List(Random.nextInt(10, 20)) { index ->
             DummyItem(
-                id = it,
-                title = UUID.randomUUID().toString()
+                id = index,
+                title = "[${index+1}] ${UUID.randomUUID()}"
             )
         }
 
